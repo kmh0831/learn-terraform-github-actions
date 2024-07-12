@@ -59,10 +59,6 @@ resource "aws_instance" "web_1" {
   }
 }
 
-output "public_ip" {
-  value = aws_instance.web_1.public_ip
-}
-
 # WEB EC2 2 인스턴스 생성
 resource "aws_instance" "web_2" {
   ami                    = "ami-0fd54cba47d6e98dc"  # AWS 리전에 따라 적절한 AMI ID로 변경하세요.
@@ -87,8 +83,4 @@ resource "aws_instance" "web_2" {
   tags = {
     Name = "terraform-web-1"
   }
-}
-
-output "public_ip" {
-  value = aws_instance.web_2.public_ip
 }
