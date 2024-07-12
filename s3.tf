@@ -61,22 +61,22 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
 # }
 
 resource "aws_s3_object" "index_html" {
-  bucket = aws_s3_bucket.website_bucket.bucket
+  bucket = aws_s3_bucket.website_bucket.id
   key    = "index.html"
-  source = "C:/Users/ghrfhdg/Desktop/WEB/index.html"  # 로컬 파일 경로
+  source = "index.html"  # 로컬 파일 경로
   acl    = "public-read"
 }
 
 resource "aws_s3_object" "product1_html" {
-  bucket = aws_s3_bucket.website_bucket.bucket
+  bucket = aws_s3_bucket.website_bucket.id
   key    = "product1.html"
-  source = "C:/Users/ghrfhdg/Desktop/WEB/product1.html"  # 로컬 파일 경로
+  source = "product1.html"  # 로컬 파일 경로
   acl    = "public-read"
 }
 
 resource "aws_s3_object" "styles_css" {
-  bucket = aws_s3_bucket.website_bucket.bucket
+  bucket = aws_s3_bucket.website_bucket.id
   key    = "styles.css"
-  source = "C:/Users/ghrfhdg/Desktop/WEB/styles.css"  # 로컬 파일 경로
+  source = "styles.css"  # 로컬 파일 경로
   acl    = "public-read"
 }

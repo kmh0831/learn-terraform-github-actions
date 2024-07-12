@@ -35,6 +35,11 @@ resource "aws_route_table" "rt-pri1-vpc-1" {
   tags = {
     Name = "rt-pri1-vpc-1"
   }
+
+  timeouts {
+    create = "30m"
+    update = "30m"
+  }
 }
 
 resource "aws_route_table" "rt-pri2-vpc-1" {
@@ -47,6 +52,11 @@ resource "aws_route_table" "rt-pri2-vpc-1" {
 
   tags = {
     Name = "rt-pri2-vpc-1"
+  }
+
+  timeouts {
+    create = "30m"
+    update = "30m"
   }
 }
 
