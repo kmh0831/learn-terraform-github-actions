@@ -60,23 +60,23 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
 #         # 업로드 대상에 대한 출처(경로) 지정 및 내부 파일(폴더)들을 각각 지정
 # }
 
-resource "aws_s3_object" "index_html" {
-  bucket = aws_s3_bucket.website_bucket.id
-  key    = "index.html"
-  source = "index.html"  # 로컬 파일 경로
-  acl    = "public-read"
-}
+# resource "aws_s3_object" "index_html" {
+#   bucket = aws_s3_bucket.website_bucket.id
+#   key    = "index.html"
+#   source = "index.html"  # 로컬 파일 경로
+#   acl    = "public-read"
+# }
 
-resource "aws_s3_object" "product1_html" {
-  bucket = aws_s3_bucket.website_bucket.id
-  key    = "product1.html"
-  source = "product1.html"  # 로컬 파일 경로
-  acl    = "public-read"
-}
+# resource "aws_s3_object" "product1_html" {
+#   bucket = aws_s3_bucket.website_bucket.id
+#   key    = "product1.html"
+#   source = "product1.html"  # 로컬 파일 경로
+#   acl    = "public-read"
+# }
 
-resource "aws_s3_object" "styles_css" {
-  bucket = aws_s3_bucket.website_bucket.id
-  key    = "styles.css"
-  source = "styles.css"  # 로컬 파일 경로
-  acl    = "public-read"
-}
+# resource "aws_s3_object" "styles_css" {
+#   bucket = aws_s3_bucket.website_bucket.id
+#   key    = "styles.css"
+#   source = "styles.css"  # 로컬 파일 경로
+#   acl    = "public-read"
+# }
