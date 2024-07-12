@@ -4,7 +4,7 @@ provider "aws" {
 
 # S3 버킷 생성
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = "s3-website_bucket-kmhyuk1018-1"  # 버킷 이름을 원하는 이름으로 변경하세요.
+  bucket = "s3-website-bucket-kmhyuk1018-1"  # 버킷 이름을 원하는 이름으로 변경하세요.
   tags = {
     environment = "devel"
   }
