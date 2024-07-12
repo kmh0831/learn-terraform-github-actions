@@ -5,7 +5,7 @@ resource "aws_eip" "nat-1" {
 }
 
 resource "aws_eip" "nat-2" {
-  instance = aws_instance.web_1.id
+  instance = aws_instance.web_2.id
   domain   = "vpc"
 }
 
