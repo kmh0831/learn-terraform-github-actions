@@ -29,7 +29,7 @@ resource "aws_route_table" "rt-pri1-vpc-1" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.nat-gw-1.id
+    network_interface_id = aws_instance.nat_1.primary_network_interface_id
   }
 
   tags = {
@@ -42,7 +42,7 @@ resource "aws_route_table" "rt-pri2-vpc-1" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.nat-gw-2.id
+    network_interface_id = aws_instance.nat_2.primary_network_interface_id
   }
 
   tags = {
