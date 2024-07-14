@@ -22,7 +22,7 @@ resource "aws_s3_bucket_public_access_block" "public-access" {
 resource "aws_s3_object" "web_file" {
   bucket = aws_s3_bucket.learn-terraform-mybucket.id
   for_each = fileset("./web/", "**")
-  key    = "each.value"
+  key    = each.value
   source = "./web/${each.value}"
 }
 
