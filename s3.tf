@@ -21,8 +21,8 @@ resource "aws_s3_bucket_public_access_block" "public-access" {
 
 resource "aws_s3_object" "learn-terraform-sample-txt" {
   bucket = aws_s3_bucket.learn-terraform-mybucket.id
-  key    = "sample.txt"
-  source = "sample.txt"
+  key    = "index.html"
+  source = "index.html"
 }
 
 resource "aws_s3_bucket_policy" "bucket-policy" {
