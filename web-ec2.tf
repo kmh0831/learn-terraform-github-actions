@@ -49,9 +49,9 @@ resource "aws_instance" "web_1" {
               sudo yum install -y httpd aws-cli
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /usr/share/nginx/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /usr/share/nginx/html/product1.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /usr/share/nginx/html/styles.css
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /var/www/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
 
@@ -76,9 +76,9 @@ resource "aws_instance" "web_2" {
               sudo yum install -y httpd aws-cli
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /usr/share/nginx/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /usr/share/nginx/html/product1.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /usr/share/nginx/html/styles.css
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /var/www/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
 
