@@ -46,12 +46,13 @@ resource "aws_instance" "web_1" {
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
-              sudo yum install -y nginx aws-cli
-              sudo systemctl start nginx
-              sudo systemctl enable --now nginx
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.id}/index.html /usr/share/nginx/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.id}/product1.html /usr/share/nginx/html/product1.html
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.id}/styles.css /usr/share/nginx/html/styles.css
+              sudo yum install -y httpd aws-cli
+              sudo systemctl start httpd
+              sudo systemctl enable --now httpd
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /usr/share/nginx/html/index.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /usr/share/nginx/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /usr/share/nginx/html/styles.css
+              sudo systemctl restart httpd
               EOF
 
   tags = {
@@ -72,12 +73,13 @@ resource "aws_instance" "web_2" {
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
-              sudo yum install -y nginx aws-cli
-              sudo systemctl start nginx
-              sudo systemctl enable --now nginx
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.bucket}/index.html /usr/share/nginx/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.bucket}/product1.html /usr/share/nginx/html/product1.html
-              aws s3 cp s3://${aws_s3_bucket.website_bucket.bucket}/styles.css /usr/share/nginx/html/styles.css
+              sudo yum install -y httpd aws-cli
+              sudo systemctl start httpd
+              sudo systemctl enable --now httpd
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /usr/share/nginx/html/index.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /usr/share/nginx/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /usr/share/nginx/html/styles.css
+              sudo systemctl restart httpd
               EOF
 
   tags = {
