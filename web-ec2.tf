@@ -30,6 +30,7 @@ resource "aws_iam_role_policy" "example" {
       {
         Action = [
           "s3:GetObject",
+          "s3:ListBucket"
         ],
         Effect = "Allow",
         Resource = "arn:aws:s3:::learn-terraform-mybucket/*",
