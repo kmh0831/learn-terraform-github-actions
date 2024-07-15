@@ -87,6 +87,11 @@ resource "aws_instance" "web_1" {
               sudo systemctl enable --now httpd
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /var/www/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product2.html /var/www/html/product2.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product3.html /var/www/html/product3.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product4.html /var/www/html/product4.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product5.html /var/www/html/product5.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product6.html /var/www/html/product6.html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
@@ -115,6 +120,11 @@ resource "aws_instance" "web_2" {
               sudo systemctl enable --now httpd
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product1.html /var/www/html/product1.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product2.html /var/www/html/product2.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product3.html /var/www/html/product3.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product4.html /var/www/html/product4.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product5.html /var/www/html/product5.html
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/product6.html /var/www/html/product6.html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
