@@ -89,15 +89,20 @@ resource "aws_instance" "web_1" {
               sudo yum install -y httpd aws-cli
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
+              sudo chown -R ec2-user:ec2-user /var/www/html
+              sudo chmod -R 755 /var/www/html
+              sudo restorecon -Rv /var/www/html
+              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/index.html /var/www/html/index.html
+              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/styles.css /var/www/html/styles.css
+              sudo chown -R apache:apache /var/www/html
+              sudo restorecon -Rv /var/www/html
               sudo systemctl restart httpd
               EOF
 
   tags = {
-    Name = "terraform-web-1"
+    Name = "terraform-web-2"
   }
 }
 
@@ -118,15 +123,20 @@ resource "aws_instance" "web_2" {
               sudo yum install -y httpd aws-cli
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
-              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
+              sudo chown -R ec2-user:ec2-user /var/www/html
+              sudo chmod -R 755 /var/www/html
+              sudo restorecon -Rv /var/www/html
+              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/index.html /var/www/html/index.html
+              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/styles.css /var/www/html/styles.css
+              sudo chown -R apache:apache /var/www/html
+              sudo restorecon -Rv /var/www/html
               sudo systemctl restart httpd
               EOF
 
   tags = {
-    Name = "terraform-web-1"
+    Name = "terraform-web-2"
   }
 }
 
