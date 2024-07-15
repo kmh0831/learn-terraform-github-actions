@@ -92,10 +92,10 @@ resource "aws_instance" "web_1" {
               sudo chown -R ec2-user:ec2-user /var/www/html
               sudo chmod -R 755 /var/www/html
               sudo restorecon -Rv /var/www/html
-              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/index.html /var/www/html/index.html
-              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
-              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/styles.css /var/www/html/styles.css
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/index.html /var/www/html/index.html
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/styles.css /var/www/html/styles.css
               sudo chown -R apache:apache /var/www/html
               sudo restorecon -Rv /var/www/html
               sudo systemctl restart httpd
@@ -126,10 +126,10 @@ resource "aws_instance" "web_2" {
               sudo chown -R ec2-user:ec2-user /var/www/html
               sudo chmod -R 755 /var/www/html
               sudo restorecon -Rv /var/www/html
-              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/index.html /var/www/html/index.html
-              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
-              aws s3 cp s3://${aws_s3_bucket.learn_terraform_mybucket.bucket}/styles.css /var/www/html/styles.css
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/index.html /var/www/html/index.html
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/styles.css /var/www/html/styles.css
               sudo chown -R apache:apache /var/www/html
               sudo restorecon -Rv /var/www/html
               sudo systemctl restart httpd
