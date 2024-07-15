@@ -87,8 +87,8 @@ resource "aws_instance" "web_1" {
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
@@ -116,8 +116,8 @@ resource "aws_instance" "web_2" {
               sudo systemctl start httpd
               sudo systemctl enable --now httpd
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/index.html /var/www/html/index.html
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/ --exclude "*" --include "*product*.html"
+              aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.id}/styles.css /var/www/html/styles.css
               sudo systemctl restart httpd
               EOF
