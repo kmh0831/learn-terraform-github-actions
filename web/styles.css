@@ -75,8 +75,8 @@ header nav ul li a {
 }
 
 .product img {
-    max-width: 100%;
-    height: auto;
+    width: 300px; /* 고정된 너비 */
+    height: auto; /* 비율 유지 */
 }
 
 .product h3 {
@@ -84,8 +84,10 @@ header nav ul li a {
 }
 
 .product p {
-    font-size: 1.2em;
+    font-size: 1.5em; /* 글씨 크기 증가 */
     color: #333;
+    font-weight: bold; /* 진하게 */
+    text-align: center; /* 가운데 정렬 */
 }
 
 .btn {

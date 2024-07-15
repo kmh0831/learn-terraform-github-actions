@@ -94,7 +94,7 @@ resource "aws_instance" "web_1" {
               sudo restorecon -Rv /var/www/html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/index.html /var/www/html/index.html
               aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/images/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/styles.css /var/www/html/styles.css
               sudo chown -R apache:apache /var/www/html
               sudo restorecon -Rv /var/www/html
@@ -128,7 +128,7 @@ resource "aws_instance" "web_2" {
               sudo restorecon -Rv /var/www/html
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/index.html /var/www/html/index.html
               aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/ --exclude "*" --include "*product*.html"
-              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
+              aws s3 sync s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/images/ /var/www/html/images/ --exclude "*" --include "*product*.jpeg"
               aws s3 cp s3://${aws_s3_bucket.learn-terraform-mybucket.bucket}/styles.css /var/www/html/styles.css
               sudo chown -R apache:apache /var/www/html
               sudo restorecon -Rv /var/www/html
