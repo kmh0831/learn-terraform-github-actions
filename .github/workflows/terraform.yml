@@ -4,7 +4,7 @@ name: 'Terraform'
 on:
   push:
     branches:
-    - "second"
+    - "main"
   pull_request:
 
 env:

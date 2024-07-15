@@ -3,6 +3,41 @@ resource "aws_key_pair" "ec2_key" {
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCjFdQD+2h71eBoFGTnCc+qVYOduiibYB6g8960Zn9Hku6U1av7Vk7uiWNxXm15yt7pfxcgSwTJRYcx9vOsq0piFGcFhhzk4zdgqlfEFTdUNPhzr4QSV2WUH+32Gg+MrbT98KMQXodzSaDtosidR+oZ8OCQvehGHrHdoksGu2V2AdIZ3ELYdDOyZbH59EOOdUHH+5gUIweonbGhedhAbf3CgHLZO8O+CCsmb93S+PiP0bM4u3nonm/cKtxrzTswvwiZIyMkJ0yUw2tsRBTSAD2xolIAFGlHxPs1Z49zPJ37UAaM5t2eiFjneFkxFFJrofFx+qvsCTKRH8u3elYv98GpXOlgplZqalJs2ft9EPfagL1kz9SXCUAE9JQzC6mHPRZ+NpGz4FgcXQxyunLy/HzvcDPLOJddYPslUxjlpeC5XLa30EcqmXDCCMeOEycNpuKddZxuedYQyloYbrbEEzWhgq11PLyTikhSot1kbrtb2e+2VZLVBjlQkF60kX+s3LE= ghrfhdg@DESKTOP-FOB5C10"
 }
 
+resource "aws_iam_role" "example" {
+  name = "example-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        },
+      },
+    ],
+  })
+}
+
+resource "aws_iam_role_policy" "example" {
+  name = "example-policy"
+  role = aws_iam_role.example.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = [
+          "s3:GetObject",
+        ],
+        Effect = "Allow",
+        Resource = "arn:aws:s3:::learn-terraform-mybucket/*",
+      },
+    ],
+  })
+}
+
 # NAT EC2 1 인스턴스 생성
 resource "aws_instance" "nat_1" {
   ami                    = "ami-0c2d3e23e757b5d84"  # AWS 리전에 따라 적절한 AMI ID로 변경하세요.
@@ -41,6 +76,7 @@ resource "aws_instance" "web_1" {
   private_ip             = "10.1.3.100"
   vpc_security_group_ids = [aws_security_group.allow_http.id]
   key_name               = aws_key_pair.ec2_key.key_name
+  iam_instance_profile = aws_iam_instance_profile.example.name
 
   # EC2 인스턴스 시작 시 실행될 사용자 데이터 스크립트
   user_data = <<-EOF
@@ -68,6 +104,7 @@ resource "aws_instance" "web_2" {
   private_ip             = "10.1.4.100"
   vpc_security_group_ids = [aws_security_group.allow_http.id]
   key_name               = aws_key_pair.ec2_key.key_name
+  iam_instance_profile = aws_iam_instance_profile.example.name
 
   # EC2 인스턴스 시작 시 실행될 사용자 데이터 스크립트
   user_data = <<-EOF
@@ -85,4 +122,9 @@ resource "aws_instance" "web_2" {
   tags = {
     Name = "terraform-web-1"
   }
+}
+
+resource "aws_iam_instance_profile" "example" {
+  name = "Terraform-IAM"
+  role = aws_iam_role.example.name
 }
