@@ -34,8 +34,8 @@ resource "aws_iam_role_policy" "example" {
         ],
         Effect = "Allow",
         Resource = [
-          "arn:aws:s3:::${aws_s3_bucket.learn_terraform_mybucket.bucket}/*",
-          "arn:aws:s3:::${aws_s3_bucket.learn_terraform_mybucket.bucket}"
+          "arn:aws:s3:::s3-kmhyuk0831-01",
+          "arn:aws:s3:::s3-kmhyuk0831-01/*"
         ]
       },
     ],
