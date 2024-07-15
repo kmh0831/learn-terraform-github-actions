@@ -33,7 +33,10 @@ resource "aws_iam_role_policy" "example" {
           "s3:ListBucket"
         ],
         Effect = "Allow",
-        Resource = "arn:aws:s3:::learn-terraform-mybucket/*",
+        Resource = [
+          "arn:aws:s3:::learn-terraform-mybucket/*",
+          "arn:aws:s3:::learn-terraform-mybucket"
+        ]
       },
     ],
   })
